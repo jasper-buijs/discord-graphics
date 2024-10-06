@@ -17,6 +17,8 @@ export default function Home() {
 
   }
 
+  const [title, setTitle] = useState<string>("NHL Regular Season")
+
   const [scoreList, updateScoreList] = useState<ScoreListItem[]>([/*{
     final: "F",
     visitingTeam: "CHI",
@@ -209,7 +211,7 @@ export default function Home() {
         <div className="sticky top-0 w-full h-32 bg-[#252525] text-center">
           <img src="/assets/NHL.png" className="h-full py-4 pr-8 inline-block" alt="NHL"/>
           <div className={"inline-block text-white font-semibold text-5xl align-middle " + inter.className}>
-            NHL Pre-Season
+            {title}
           </div>
         </div>
 
@@ -217,7 +219,7 @@ export default function Home() {
         <div className="w-1/2 float-left">
           <div
             className={"h-16 text-center bg-[#1f1f1f] text-white leading-[4rem] text-2xl border-r-[1px] border-black " + inter.className}>
-            Yesterday's Scores
+            Yesterday&apos;s Scores
           </div>
           <div className="relative">
             {scoreEmblems(scoreList)}
@@ -228,7 +230,7 @@ export default function Home() {
         <div className="w-1/2 float-right">
           <div
             className={"h-16 text-center bg-[#1f1f1f] text-white leading-[4rem] text-2xl " + inter.className}>
-            Tonight's Game Schedule
+            Tonight&apos;s Game Schedule
           </div>
           <div className="relative pt-4">
             {scheduleEmblems(scheduleList)}
@@ -238,17 +240,29 @@ export default function Home() {
 
 
 
+      {/* TITLE CONFIG */}
+      <div className={"m-4"}>
+        <div className={"text-2xl"}>Set Graphic Title</div>
+        <div className={"m-4"}>
+          <select name={"titleSelector"} defaultValue="NHL Regular Season" onChange={(t) => setTitle(t.target.value)}>
+            {["NHL Pre-Season", "NHL Regular Season", "NHL Stanley Cup Playoffs"].map(t => <option key={t}>{t}</option>)}
+          </select>
+        </div>
+      </div>
+
+
+
       {/* API FETCH CONFIG */}
       <div className={"m-4"}>
         <div className={"text-2xl"}>Fetch Games from NHL API</div>
         <div className={"m-4"}>
-          <div className={"inline-block mr-4"}>Fetch Today's Schedule:</div>
+          <div className={"inline-block mr-4"}>Fetch Today&apos;s Schedule:</div>
           <button className={"border-black border-[1px] px-2 rounded-md"} onClick={onFetchSchedule}>FETCH & OVERWRITE
           </button>
           <div className={"inline block ml-4 italic"}>(This can take up to a minute)</div>
         </div>
         <div className={"m-4"}>
-          <div className={"inline-block mr-4"}>Fetch Yesterday's Scores:</div>
+          <div className={"inline-block mr-4"}>Fetch Yesterday&apos;s Scores:</div>
           <button className={"border-black border-[1px] px-2 rounded-md"} onClick={onFetchScore}>FETCH & OVERWRITE
           </button>
           <div className={"inline block ml-4 italic"}>(This can take up to a minute) - SHOOTOUT SCORE WILL NOT BE SET AUTOMATICALLY</div>
@@ -258,7 +272,7 @@ export default function Home() {
 
       {/* SCORE CONFIG */}
       <div className={"m-4"}>
-        <div className={"text-2xl"}>Yesterday's Scores</div>
+        <div className={"text-2xl"}>Yesterday&apos;s Scores</div>
         <div className={"inline-block mr-2"}>Add game:</div>
         <select name={"finalTypeSelectorScore"} onChange={onFinalTypeSelectorScoreChange}>
           {["F", "OT", "SO", "2OT", "3OT", "4OT", "5OT", "6OT"].map(f => <option key={f}>{f}</option>)}
@@ -283,7 +297,7 @@ export default function Home() {
 
       {/* SCHEDULE CONFIG */}
       <div className={"m-4"}>
-        <div className={"text-2xl"}>Tonight's Game Schedule</div>
+        <div className={"text-2xl"}>Tonight&apos;s Game Schedule</div>
         <div className={"inline-block mr-2"}>Add game:</div>
         <select name={"visitingTeamSelectorSchedule"} onChange={onVisitingTeamSelectorScheduleChange}>
           {teamAb.map(ab => <option key={ab}>{ab}</option>)}
