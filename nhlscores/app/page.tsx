@@ -6,16 +6,15 @@ import scheduleEmblems from "@/app/components/scheduleEmblem";
 import {useState} from "react";
 import {FinalType, ScheduleListItem, ScoreListItem, Team} from "@/app/types";
 import {teamAb} from "@/app/components/teams";
-import scoreEmblem from "@/app/components/scoreEmblem";
 import {fetchSchedule, fetchScores} from "@/app/components/fetchAPI";
 
 const inter = Inter({subsets: ["latin"]});
 
 export default function Home() {
-  function onTakeScreenshot () {
+  /*function onTakeScreenshot () {
     const graphic = document.getElementById("graphic");
 
-  }
+  }*/
 
   const [title, setTitle] = useState<string>("NHL Regular Season")
 
@@ -165,7 +164,7 @@ export default function Home() {
   }
 
   const [neutralIceSelectorScheduleValue, setNeutralIceSelectorScheduleValue] = useState<boolean>(false);
-  function onNeutralIceSelectorChange (event: any) {
+  function onNeutralIceSelectorChange (_event: any) {
     setNeutralIceSelectorScheduleValue(!neutralIceSelectorScheduleValue);
   }
 
@@ -259,13 +258,13 @@ export default function Home() {
           <div className={"inline-block mr-4"}>Fetch Today&apos;s Schedule:</div>
           <button className={"border-black border-[1px] px-2 rounded-md"} onClick={onFetchSchedule}>FETCH & OVERWRITE
           </button>
-          <div className={"inline block ml-4 italic"}>(This can take up to a minute)</div>
+          <div className={"inline-block ml-4 italic"}>(This can take up to a minute)</div>
         </div>
         <div className={"m-4"}>
           <div className={"inline-block mr-4"}>Fetch Yesterday&apos;s Scores:</div>
           <button className={"border-black border-[1px] px-2 rounded-md"} onClick={onFetchScore}>FETCH & OVERWRITE
           </button>
-          <div className={"inline block ml-4 italic"}>(This can take up to a minute) - SHOOTOUT SCORE WILL NOT BE SET AUTOMATICALLY</div>
+          <div className={"inline-block ml-4 italic"}>(This can take up to a minute) - SHOOTOUT SCORE WILL NOT BE SET AUTOMATICALLY</div>
         </div>
       </div>
 
