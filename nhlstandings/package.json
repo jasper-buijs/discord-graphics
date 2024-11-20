@@ -3,15 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "bun run cors & next dev",
+    "cors": "bun run opel -e https://api-web.nhle.com -p 8888",
     "build": "next build",
-    "start": "next start",
+    "start": "bun run cors & next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "next": "^14.2.15",
+    "opel": "^1.1.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "next": "^14.2.15"
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "typescript": "^5.6.3",

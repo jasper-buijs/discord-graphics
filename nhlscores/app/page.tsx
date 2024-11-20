@@ -3,14 +3,32 @@
 import {Inter} from "next/font/google";
 import scoreEmblems from "@/app/components/scoreEmblem";
 import scheduleEmblems from "@/app/components/scheduleEmblem";
-import {useState} from "react";
+import { useEffect, useRef, useState } from "react";
 import {FinalType, ScheduleListItem, ScoreListItem, Team} from "@/app/types";
 import {teamAb} from "@/app/components/teams";
 import {fetchSchedule, fetchScores} from "@/app/components/fetchAPI";
+// @ts-ignore
+//import { useScreenshot } from "use-react-screenshot";
+import { useScreenshot } from "use-screenshot-hook";
 
 const inter = Inter({subsets: ["latin"]});
 
 export default function Home() {
+  const ref = useRef<any>(null);
+  const {image, takeScreenshot} = useScreenshot();
+  useEffect(() => {
+    if (!image) return;
+    const date = new Date();
+    let name = `${String(date.getFullYear()).substring(2, 4)}${String(date.getMonth() + 1)}${String(date.getDate())}.png`;
+    let link = document.createElement("a");
+    link.href = image || "";
+    link.download = name;
+    link.click();
+    link.remove();
+  }, [image]);
+  const onTakeScreenshot = () => {
+    takeScreenshot(ref.current);
+  }
   /*function onTakeScreenshot () {
     const graphic = document.getElementById("graphic");
 
@@ -205,10 +223,10 @@ export default function Home() {
   return (
     <>
       {/* GRAPHIC PREVIEW */}
-      <div className="bg-black w-[1800px] overflow-y-scroll" id={"graphic"}>
+      <div className="bg-black w-[1800px] overflow-y-scroll" id={"root"} ref={ref}>
         {/* Header */}
         <div className="sticky top-0 w-full h-32 bg-[#252525] text-center">
-          <img src="/assets/NHL.png" className="h-full py-4 pr-8 inline-block" alt="NHL"/>
+          <img src="/assets/NHL.png" className="h-full py-4 pr-8 inline-block" alt="NHL" />
           <div className={"inline-block text-white font-semibold text-5xl align-middle " + inter.className}>
             {title}
           </div>
@@ -217,7 +235,8 @@ export default function Home() {
         {/* Left Column */}
         <div className="w-1/2 float-left">
           <div
-            className={"h-16 text-center bg-[#1f1f1f] text-white leading-[4rem] text-2xl border-r-[1px] border-black " + inter.className}>
+            className={"h-16 text-center bg-[#1f1f1f] text-white leading-[4rem] text-2xl border-r-[1px] border-black " + inter.className}
+          >
             Yesterday&apos;s Scores
           </div>
           <div className="relative">
@@ -228,7 +247,8 @@ export default function Home() {
         {/* Right Column */}
         <div className="w-1/2 float-right">
           <div
-            className={"h-16 text-center bg-[#1f1f1f] text-white leading-[4rem] text-2xl " + inter.className}>
+            className={"h-16 text-center bg-[#1f1f1f] text-white leading-[4rem] text-2xl " + inter.className}
+          >
             Tonight&apos;s Game Schedule
           </div>
           <div className="relative pt-4">
@@ -238,17 +258,23 @@ export default function Home() {
       </div>
 
 
-
       {/* TITLE CONFIG */}
+      <div className={"m-4"}>
+        <div className={"text-2xl"}>Screenshot</div>
+        <div className={"m-4"}>
+          <div className={"inline-block mr-4"}>Save Screenshot:</div>
+          <button className={"border-black border-[1px] px-2 rounded-md"} onClick={onTakeScreenshot}>SCREENSHOT</button>
+        </div>
+      </div>
       <div className={"m-4"}>
         <div className={"text-2xl"}>Set Graphic Title</div>
         <div className={"m-4"}>
           <select name={"titleSelector"} defaultValue="NHL Regular Season" onChange={(t) => setTitle(t.target.value)}>
-            {["NHL Pre-Season", "NHL Regular Season", "NHL Stanley Cup Playoffs"].map(t => <option key={t}>{t}</option>)}
+            {["NHL Pre-Season", "NHL Regular Season", "NHL Stanley Cup Playoffs"].map(t => <option key={t}
+            >{t}</option>)}
           </select>
         </div>
       </div>
-
 
 
       {/* API FETCH CONFIG */}
@@ -264,7 +290,9 @@ export default function Home() {
           <div className={"inline-block mr-4"}>Fetch Yesterday&apos;s Scores:</div>
           <button className={"border-black border-[1px] px-2 rounded-md"} onClick={onFetchScore}>FETCH & OVERWRITE
           </button>
-          <div className={"inline-block ml-4 italic"}>(This can take up to a minute) - SHOOTOUT SCORE WILL NOT BE SET AUTOMATICALLY</div>
+          <div className={"inline-block ml-4 italic"}>(This can take up to a minute) - SHOOTOUT SCORE WILL NOT BE SET
+            AUTOMATICALLY
+          </div>
         </div>
       </div>
 
@@ -279,14 +307,22 @@ export default function Home() {
         <select name={"visitingTeamSelectorScore"} onChange={onVisitingTeamSelectorScoreChange}>
           {teamAb.map(ab => <option key={ab}>{ab}</option>)}
         </select>
-        <input type={"number"} name={"visitingTeamRegulationScoreSelector"} defaultValue={0} required={true} className={"ml-2 w-8"} onChange={onVisitingTeamRegulationScoreSelectorChange} />
-        <input type={"number"} name={"visitingTeamShootoutScoreSelector"} defaultValue={0} required={false} className={"ml-2 w-8"} onChange={onVisitingTeamShootoutScoreSelectorChange} />
+        <input type={"number"} name={"visitingTeamRegulationScoreSelector"} defaultValue={0} required={true}
+          className={"ml-2 w-8"} onChange={onVisitingTeamRegulationScoreSelectorChange}
+        />
+        <input type={"number"} name={"visitingTeamShootoutScoreSelector"} defaultValue={0} required={false}
+          className={"ml-2 w-8"} onChange={onVisitingTeamShootoutScoreSelectorChange}
+        />
         <div className={"inline-block mx-1"}>vs</div>
         <select name={"homeTeamSelectorScore"} onChange={onHomeTeamSelectorScoreChange}>
           {teamAb.map(ab => <option key={ab}>{ab}</option>)}
         </select>
-        <input type={"number"} name={"homeTeamRegulationScoreSelector"} defaultValue={0} required={true} className={"ml-2 w-8"} onChange={onHomeTeamRegulationScoreSelectorChange} />
-        <input type={"number"} name={"homeTeamShootoutScoreSelector"} defaultValue={0} required={false} className={"ml-2 w-8"} onChange={onHomeTeamShootoutScoreSelectorChange} />
+        <input type={"number"} name={"homeTeamRegulationScoreSelector"} defaultValue={0} required={true}
+          className={"ml-2 w-8"} onChange={onHomeTeamRegulationScoreSelectorChange}
+        />
+        <input type={"number"} name={"homeTeamShootoutScoreSelector"} defaultValue={0} required={false}
+          className={"ml-2 w-8"} onChange={onHomeTeamShootoutScoreSelectorChange}
+        />
         <button className={"border-black border-[1px] ml-4 px-2 rounded-md"} onClick={onAddGameToScore}>ADD</button>
         <div className={"m-4"}>
           {showRegisteredScores()}
@@ -306,10 +342,11 @@ export default function Home() {
           {teamAb.map(ab => <option key={ab}>{ab}</option>)}
         </select>
         <div className={"inline-block mx-2"}>at time (Brussels timezone)</div>
-        <input type={"time"} name={"scheduleTimeSelector"} required={true} onChange={onScheduleTimeSelectorChange}/>
+        <input type={"time"} name={"scheduleTimeSelector"} required={true} onChange={onScheduleTimeSelectorChange} />
         <div className={"inline-block ml-2 mr-1"}>Neutral Ice:</div>
         <input type={"checkbox"} name={"neutralIceSelectorSchedule"} required={false}
-               onChange={onNeutralIceSelectorChange}/>
+          onChange={onNeutralIceSelectorChange}
+        />
         <button className={"border-black border-[1px] ml-4 px-2 rounded-md"} onClick={onAddGameToSchedule}>ADD</button>
         <div className={"m-4"}>
           {showRegisteredScheduledGames()}

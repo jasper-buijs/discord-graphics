@@ -4,18 +4,20 @@ import {Dispatch, SetStateAction} from "react";
 export function fetchSchedule(updateScheduleList: Dispatch<SetStateAction<ScheduleListItem[]>>) {
   let toScheduleGames: ScheduleListItem[] = [];
   const now = new Date();
-  //const now = new Date("September 21, 2024 19:00:00");
+  //const now = new Date("November 11, 2024 19:00:00");
   const year = String(now.getFullYear());
   const month = String(now.getMonth() + 1).padStart(2, "0");
   const day = String(now.getDate()).padStart(2, "0");
-  const nhlUrl = `https://api-web.nhle.com/v1/schedule/${year}-${month}-${day}`;
-  const url = `https://api.allorigins.win/get?url=${encodeURIComponent(nhlUrl)}`;
+  //OLD const nhlUrl = `https://api-web.nhle.com/v1/schedule/${year}-${month}-${day}`;
+  //OLD const url = `https://api.allorigins.win/get?url=${encodeURIComponent(nhlUrl)}`;
+  //RUN opel -e https://api-web.nhle.com -p 8888
+  const url = `http://localhost:8888/v1/schedule/${year}-${month}-${day}`;
   fetch(url, {
     method: "GET"
   }).then((r: any) => {
     return r.json();
   }).then((data: any) => {
-    data = JSON.parse(data.contents);
+    //data = JSON.parse(data);
     const gameWeek = data.gameWeek.filter((week: any) => week.date == `${year}-${month}-${day}`);
     gameWeek[0].games.forEach((g: any) => {
       let toScheduleGame: ScheduleListItem = {
@@ -34,18 +36,19 @@ export function fetchScores(updateScoreList: Dispatch<SetStateAction<ScoreListIt
   let toScoreGames: ScoreListItem[] = [];
   const now = new Date();
   now.setDate(now.getDate() - 1);
-  //const now = new Date("April 13, 2024 19:00:00");
+  //const now = new Date("November 10, 2024 19:00:00");
   const year = String(now.getFullYear());
   const month = String(now.getMonth() + 1).padStart(2, "0");
   const day = String(now.getDate()).padStart(2, "0");
-  const nhlUrl = `https://api-web.nhle.com/v1/score/${year}-${month}-${day}`;
-  const url = `https://api.allorigins.win/get?url=${encodeURIComponent(nhlUrl)}`;
+  //const nhlUrl = `https://api-web.nhle.com/v1/score/${year}-${month}-${day}`;
+  //const url = `https://api.allorigins.win/get?url=${encodeURIComponent(nhlUrl)}`;
+  const url = `http://localhost:8888/v1/score/${year}-${month}-${day}`;
   fetch(url, {
     method: "GET"
   }).then((r: any) => {
     return r.json();
   }).then((data: any) => {
-    data = JSON.parse(data.contents);
+    //data = JSON.parse(data.contents);
     data.games.forEach((g: any) => {
       // REG / OT / SO
       let gameEnd: FinalType = "F";

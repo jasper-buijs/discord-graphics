@@ -1,0 +1,214 @@
+{
+  "series": "F1",
+  "year": 2025,
+  "calendar": [
+    {
+      "eventKey": "GEN",
+      "countryCode": "---",
+      "countryName": "Placeholder",
+      "shortEventName": "Placeholder Grand Prix",
+      "fullEventName": "Formula 1 Placeholder Grand Prix"
+    }, {
+      "eventKey": "PST",
+      "countryCode": "BHR",
+      "countryName": "Bahrain",
+      "shortEventName": "Pre-Season Testing",
+      "fullEventName": "Formula 1 Pre-Season Testing",
+      "circuitName": "Bahrain International Circuit",
+      "sprint": false,
+      "testingEvent": true
+    }, {
+      "eventKey": "AUS",
+      "countryCode": "AUS",
+      "countryName": "Australia",
+      "shortEventName": "Australian Grand Prix",
+      "fullEventName": "Formula 1 Australian Grand Prix",
+      "circuitName": "Albert Park Grand Prix Circuit",
+      "sprint": false
+    }, {
+      "eventKey": "CHN",
+      "countryCode": "CHN",
+      "countryName": "China",
+      "shortEventName": "Chinese Grand Prix",
+      "fullEventName": "Formula 1 Chinese Grand Prix",
+      "circuitName": "Shanghai International Circuit",
+      "sprint": false
+    }, {
+      "eventKey": "JPN",
+      "countryCode": "JPN",
+      "countryName": "Japan",
+      "shortEventName": "Japanese Grand Prix",
+      "fullEventName": "Formula 1 Japanese Grand Prix",
+      "circuitName": "Suzuka Circuit",
+      "sprint": false
+    }, {
+      "eventKey": "BHR",
+      "countryCode": "BHR",
+      "countryName": "Bahrain",
+      "shortEventName": "Bahrain Grand Prix",
+      "fullEventName": "Formula 1 Bahrain Grand Prix",
+      "circuitName": "Bahrain International Circuit",
+      "sprint": false
+    }, {
+      "eventKey": "SAU",
+      "countryCode": "SAU",
+      "countryName": "SAudi Arabia",
+      "shortEventName": "Saudi Arabian Grand Prix",
+      "fullEventName": "Formula 1 Saudi Arabian Grand Prix",
+      "circuitName": "Jeddah Corniche Circuit",
+      "sprint": false
+    }, {
+      "eventKey": "USA_MI",
+      "countryCode": "USA",
+      "countryName": "United States",
+      "shortEventName": "Miami Grand Prix",
+      "fullEventName": "Formula 1 Miami Grand Prix",
+      "circuitName": "Miami International Autodrome",
+      "sprint": false
+    }, {
+      "eventKey": "ITA_ER",
+      "countryCode": "ITA",
+      "countryName": "Italy",
+      "shortEventName": "Emilia-Romagna Grand Prix",
+      "fullEventName": "Formula 1 Gran Premio Dell'Emilia-Romagna",
+      "circuitName": "Autodromo Internazionale Enzo e Dino Ferrari",
+      "sprint": false
+    }, {
+      "eventKey": "MCO",
+      "countryCode": "MCO",
+      "countryName": "Monaco",
+      "shortEventName": "Monaco Grand Prix",
+      "fullEventName": "Formula 1 Grand Prix De Monaco",
+      "circuitName": "Circuit de Monaco",
+      "sprint": false
+    }, {
+      "eventKey": "ESP",
+      "countryCode": "ESP",
+      "countryName": "Spain",
+      "shortEventName": "Spanish Grand Prix",
+      "fullEventName": "Formula 1 Spanish Grand Prix",
+      "circuitName": "Circuit de Barcelona-Catalunya",
+      "sprint": false
+    }, {
+      "eventKey": "CAN",
+      "countryCode": "CAN",
+      "countryName": "Canada",
+      "shortEventName": "Canada Grand Prix",
+      "fullEventName": "Formula 1 Canada Grand Prix",
+      "circuitName": "Circuit Gilles-Villeneuve",
+      "sprint": false
+    }, {
+      "eventKey": "AUT",
+      "countryCode": "AUT",
+      "countryName": "Austria",
+      "shortEventName": "Austrian Grand Prix",
+      "fullEventName": "Formula 1 Austrian Grand Prix",
+      "circuitName": "Red Bull Ring",
+      "sprint": false
+    }, {
+      "eventKey": "GBR",
+      "countryCode": "GBR",
+      "countryName": "United Kingdom",
+      "shortEventName": "British Grand Prix",
+      "fullEventName": "Formula 1 British Grand Prix",
+      "circuitName": "Silverstone Circuit",
+      "sprint": false
+    }, {
+      "eventKey": "BEL",
+      "countryCode": "BEL",
+      "countryName": "Belgium",
+      "shortEventName": "Belgian Grand Prix",
+      "fullEventName": "Formula 1 Belgian Grand Prix",
+      "circuitName": "Circuit de Spa-Francorchamps",
+      "sprint": false
+    }, {
+      "eventKey": "HUN",
+      "countryCode": "HUN",
+      "countryName": "Hungary",
+      "shortEventName": "Hungarian Grand Prix",
+      "fullEventName": "Formula 1 Hungarian Grand Prix",
+      "circuitName": "Hungaroring",
+      "sprint": false
+    }, {
+      "eventKey": "NLD",
+      "countryCode": "NLD",
+      "countryName": "Netherlands",
+      "shortEventName": "Dutch Grand Prix",
+      "fullEventName": "Formula 1 Dutch Grand Prix",
+      "circuitName": "Circuit Zandvoort",
+      "sprint": false
+    }, {
+      "eventKey": "ITA_MO",
+      "countryCode": "ITA",
+      "countryName": "Italy",
+      "shortEventName": "Italian Grand Prix",
+      "fullEventName": "Formula 1 Italian Grand Prix",
+      "circuitName": "Autodromo Nazionale Monza",
+      "sprint": false
+    }, {
+      "eventKey": "AZE",
+      "countryCode": "AZE",
+      "countryName": "Azerbaijan",
+      "shortEventName": "Azerbaijan Grand Prix",
+      "fullEventName": "Formula 1 Azerbaijan Grand Prix",
+      "circuitName": "Baku City Circuit",
+      "sprint": false
+    }, {
+      "eventKey": "SGP",
+      "countryCode": "SGP",
+      "countryName": "Singapore",
+      "shortEventName": "Singapore Grand Prix",
+      "fullEventName": "Formula 1 Singapore Grand Prix",
+      "circuitName": "Marina Bay Street Circuit",
+      "sprint": false
+    }, {
+      "eventKey": "USA_TX",
+      "countryCode": "USA",
+      "countryName": "United States",
+      "shortEventName": "United States Grand Prix",
+      "fullEventName": "Formula 1 United States Grand Prix",
+      "circuitName": "Circuit of The Americas",
+      "sprint": false
+    }, {
+      "eventKey": "MEX",
+      "countryCode": "MEX",
+      "countryName": "Mexico",
+      "shortEventName": "Mexico City Grand Prix",
+      "fullEventName": "Formula 1 Gran Premio De La Ciudad De México",
+      "Circuit Name": "Autódromo Hermanos Rodríguez",
+      "sprint": false
+    }, {
+      "eventKey": "BRA",
+      "countryCode": "BRA",
+      "countryName": "Brazil",
+      "shortEventName": "São Paulo Grand Prix",
+      "fullEventName": "Formula 1 Grande Prêmio De São Paulo",
+      "circuitName": "Autódromo José Carlos Pace",
+      "sprint": false
+    }, {
+      "eventKey": "USA_LV",
+      "countryCode": "USA",
+      "countryName": "United States",
+      "shortEventName": "Las Vegas Grand Prix",
+      "fullEventName": "Formula 1 Las Vegas Grand Prix",
+      "circuitName": "Las Vegas Strip Circuit",
+      "sprint": false
+    }, {
+      "eventKey": "QAT",
+      "countryCode": "QAT",
+      "countryName": "Qatar",
+      "shortEventName": "Qatar Grand Prix",
+      "fullEventName": "Formula 1 Qatar Grand Prix",
+      "circuitName": "Lusail International Circuit",
+      "sprint": false
+    }, {
+      "eventKey": "ARE",
+      "countryCode": "ARE",
+      "countryName": "United Arab Emirates",
+      "shortEventName": "Abu Dhabi Grand Prix",
+      "fullEventName": "Formula 1 Abu Dhabi Grand Prix",
+      "circuitName": "Yas Marina Circuit",
+      "sprint": false
+    }
+  ]
+}

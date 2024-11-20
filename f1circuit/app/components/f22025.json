@@ -1,0 +1,97 @@
+{
+  "series": "F2",
+  "year": 2025,
+  "calendar": [
+    {
+      "eventKey": "GEN",
+      "countryCode": "---",
+      "countryName": "Placeholder",
+      "shortEventName": "Placeholder Grand Prix",
+      "fullEventName": "Formula 2 Placeholder Event"
+    }, {
+      "eventKey": "AUS",
+      "countryCode": "AUS",
+      "countryName": "Australia",
+      "shortEventName": "Australian Grand Prix",
+      "fullEventName": "Formula 2 Melbourne Event"
+    }, {
+      "eventKey": "BHR",
+      "countryCode": "BHR",
+      "countryName": "Bahrain",
+      "shortEventName": "Bahrain Grand Prix",
+      "fullEventName": "Formula 2 Sakhir Event"
+    }, {
+      "eventKey": "SAU",
+      "countryCode": "SAU",
+      "countryName": "Saudi Arabian",
+      "shortEventName": "Saudi Arabian Grand Prix",
+      "fullEventName": "Formula 2 Jeddah Event"
+    }, {
+      "eventKey": "ITA_ER",
+      "countryCode": "ITA",
+      "countryName": "Italy",
+      "shortEventName": "Emilia-Romagna Grand Prix",
+      "fullEventName": "Formula 2 Imola Event"
+    }, {
+      "eventKey": "MCO",
+      "countryCode": "MCO",
+      "countryName": "Monaco",
+      "shortEventName": "Monaco Grand Prix",
+      "fullEventName": "Formula 2 Monte Carlo Event"
+    }, {
+      "eventKey": "ESP",
+      "countryCode": "ESP",
+      "countryName": "Spain",
+      "shortEventName": "Spanish Grand Prix",
+      "fullEventName": "Formula 2 Barcelona Event"
+    }, {
+      "eventKey": "AUT",
+      "countryCode": "AUT",
+      "countryName": "Austria",
+      "shortEventName": "Austrian Grand Prix",
+      "fullEventName": "Formula 2 Spielberg Event"
+    }, {
+      "eventKey": "GBR",
+      "countryCode": "GBR",
+      "countryName": "United Kingdom",
+      "shortEventName": "British Grand Prix",
+      "fullEventName": "Formula 2 Silverstone Event"
+    }, {
+      "eventKey": "BEL",
+      "countryCode": "BEL",
+      "countryName": "Belgium",
+      "shortEventName": "Belgian Grand Prix",
+      "fullEventName": "Formula 2 Spa-Francorpchamps Event"
+    }, {
+      "eventKey": "HUN",
+      "countryCode": "HUN",
+      "countryName": "Hungary",
+      "shortEventName": "Hungarian Grand Prix",
+      "fullEventName": "Formula 2 Budapest Event"
+    }, {
+      "eventKey": "ITA_MO",
+      "countryCode": "ITA",
+      "countryName": "Italy",
+      "shortEventName": "Italian Grand Prix",
+      "fullEventName": "Formula 2 Monza Event"
+    }, {
+      "eventKey": "AZE",
+      "countryCode": "AZE",
+      "countryName": "Azerbaijan",
+      "shortEventName": "Azerbaijan Grand Prix",
+      "fullEventName": "Formula 2 Baku Event"
+    }, {
+      "eventKey": "QAT",
+      "countryCode": "QAT",
+      "countryName": "Qatar",
+      "shortEventName": "Qatar Grand Prix",
+      "fullEventName": "Formula 2 Lusail Event"
+    }, {
+      "eventKey": "ARE",
+      "countryCode": "ARE",
+      "countryName": "United Arab Emirates",
+      "shortEventName": "Abu Dhabi Grand Prix",
+      "fullEventName": "Formula 2 Yas Marina Event"
+    }
+  ]
+}

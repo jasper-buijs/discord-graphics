@@ -1,0 +1,62 @@
+{
+  "series": "FA",
+  "year": 2025,
+  "calendar": [
+    {
+      "eventKey": "GEN",
+      "countryCode": "---",
+      "countryName": "Placeholder",
+      "shortEventName": "Placeholder Grand Prix",
+      "fullEventName": "F1 Academy Placeholder Event"
+    }, {
+      "eventKey": "CHN",
+      "countryCode": "CHN",
+      "countryName": "China",
+      "shortEventName": "Chinese Grand Prix",
+      "fullEventName": "F1 Academy Shanghai Event",
+      "circuitName": "Shanghai International Circuit"
+    }, {
+      "eventKey": "SAU",
+      "countryCode": "SAU",
+      "countryName": "SAudi Arabia",
+      "shortEventName": "Saudi Arabian Grand Prix",
+      "fullEventName": "F1 Academy Jeddah Event",
+      "circuitName": "Jeddah Corniche Circuit"
+    }, {
+      "eventKey": "USA_MI",
+      "countryCode": "USA",
+      "countryName": "United States",
+      "shortEventName": "Miami Grand Prix",
+      "fullEventName": "F1 Academy Miami Event",
+      "circuitName": "Miami International Autodrome"
+    }, {
+      "eventKey": "CAN",
+      "countryCode": "CAN",
+      "countryName": "Canada",
+      "shortEventName": "Canada Grand Prix",
+      "fullEventName": "F1 Academy Montreal Event",
+      "circuitName": "Circuit Gilles-Villeneuve"
+    }, {
+      "eventKey": "NLD",
+      "countryCode": "NLD",
+      "countryName": "Netherlands",
+      "shortEventName": "Dutch Grand Prix",
+      "fullEventName": "F1 Academy Zandvoort Event",
+      "circuitName": "Circuit Zandvoort"
+    }, {
+      "eventKey": "SGP",
+      "countryCode": "SGP",
+      "countryName": "Singapore",
+      "shortEventName": "Singapore Grand Prix",
+      "fullEventName": "F1 Academy Singapore Event",
+      "circuitName": "Marina Bay Street Circuit"
+    }, {
+      "eventKey": "USA_LV",
+      "countryCode": "USA",
+      "countryName": "United States",
+      "shortEventName": "Las Vegas Grand Prix",
+      "fullEventName": "F1 Academy Las Vegas Event",
+      "circuitName": "Las Vegas Strip Circuit"
+    }
+  ]
+}

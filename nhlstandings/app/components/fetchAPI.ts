@@ -2,14 +2,16 @@ import { EasternStandingsRow, WesternStandingsRow } from "@/app/types";
 import { Dispatch, SetStateAction } from "react";
 
 export function fetchStandings(setEasternStandings: Dispatch<SetStateAction<EasternStandingsRow[]>>, setWesternStandings: Dispatch<SetStateAction<WesternStandingsRow[]>>) {
-  const nhlUrl = `https://api-web.nhle.com/v1/standings/now`;
-  const url = `https://api.allorigins.win/get?url=${encodeURIComponent(nhlUrl)}`;
+  //OLD const nhlUrl = `https://api-web.nhle.com/v1/standings/now`;
+  //OLD const url = `https://api.allorigins.win/get?url=${encodeURIComponent(nhlUrl)}`;
+  const url = `http://localhost:8888/v1/standings/now`;
   fetch(url, {
     method: "GET"
   }).then((r: any) => {
     return r.json();
   }).then((data: any) => {
-    data = JSON.parse(data.contents);
+    console.log(data);
+    //data = JSON.parse(data.contents);
     const standings = data.standings;
     let newEasternStandings: EasternStandingsRow[] = [];
     let newWesternStandings: WesternStandingsRow[] = [];

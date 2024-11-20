@@ -1,0 +1,73 @@
+{
+  "series": "F3",
+  "year": 2025,
+  "calendar": [
+    {
+      "eventKey": "GEN",
+      "countryCode": "---",
+      "countryName": "Placeholder",
+      "shortEventName": "Placeholder Grand Prix",
+      "fullEventName": "Formula 3 Placeholder Event"
+    }, {
+      "eventKey": "AUS",
+      "countryCode": "AUS",
+      "countryName": "Australia",
+      "shortEventName": "Australian Grand Prix",
+      "fullEventName": "Formula 3 Melbourne Event"
+    }, {
+      "eventKey": "BHR",
+      "countryCode": "BHR",
+      "countryName": "Bahrain",
+      "shortEventName": "Bahrain Grand Prix",
+      "fullEventName": "Formula 3 Sakhir Event"
+    }, {
+      "eventKey": "ITA_ER",
+      "countryCode": "ITA",
+      "countryName": "Italy",
+      "shortEventName": "Emilia-Romagna Grand Prix",
+      "fullEventName": "Formula 3 Imola Event"
+    }, {
+      "eventKey": "MCO",
+      "countryCode": "MCO",
+      "countryName": "Monaco",
+      "shortEventName": "Monaco Grand Prix",
+      "fullEventName": "Formula 3 Monte Carlo Event"
+    }, {
+      "eventKey": "ESP",
+      "countryCode": "ESP",
+      "countryName": "Spain",
+      "shortEventName": "Spanish Grand Prix",
+      "fullEventName": "Formula 3 Barcelona Event"
+    }, {
+      "eventKey": "AUT",
+      "countryCode": "AUT",
+      "countryName": "Austria",
+      "shortEventName": "Austrian Grand Prix",
+      "fullEventName": "Formula 3 Spielberg Event"
+    }, {
+      "eventKey": "GBR",
+      "countryCode": "GBR",
+      "countryName": "United Kingdom",
+      "shortEventName": "British Grand Prix",
+      "fullEventName": "Formula 3 Silverstone Event"
+    }, {
+      "eventKey": "BEL",
+      "countryCode": "BEL",
+      "countryName": "Belgium",
+      "shortEventName": "Belgian Grand Prix",
+      "fullEventName": "Formula 3 Spa-Francorpchamps Event"
+    }, {
+      "eventKey": "HUN",
+      "countryCode": "HUN",
+      "countryName": "Hungary",
+      "shortEventName": "Hungarian Grand Prix",
+      "fullEventName": "Formula 3 Budapest Event"
+    }, {
+      "eventKey": "ITA_MO",
+      "countryCode": "ITA",
+      "countryName": "Italy",
+      "shortEventName": "Italian Grand Prix",
+      "fullEventName": "Formula 3 Monza Event"
+    }
+  ]
+}
