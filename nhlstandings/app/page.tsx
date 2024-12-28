@@ -12,12 +12,71 @@ import {
   pacificTeams, WesternStandingsRow,
   WesternTeam,
 } from "@/app/types";
+import { time, TimestampStyles } from "@discordjs/formatters";
 import {Inter} from "next/font/google";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import useScreenshot from "use-screenshot-hook";
 
 const inter = Inter({subsets: ["latin"]});
 
 export default function Home() {
+  const ref = useRef<any>(null);
+
+  const { image: saveImage, takeScreenshot: saveScreenshot } = useScreenshot();
+  useEffect(() => {
+    if (!saveImage) return;
+    const date = new Date();
+    let name = `${String(date.getFullYear()).substring(2, 4)}${String(date.getMonth() + 1)}${String(date.getDate())}s.png`;
+    let link = document.createElement("a");
+    link.href = saveImage || "";
+    link.download = name;
+    link.click();
+    link.remove();
+  }, [saveImage]);
+  const onSaveScreenshot = () => {
+    saveScreenshot(ref.current);
+  }
+
+  function dataURLToBlob(dataURL: string) {
+    const parts = dataURL.split(',');
+    const byteString = atob(parts[1]);
+    const mimeMatch = parts[0].match(/:(.*?);/);
+    const mimeString = mimeMatch?.[1] ?? 'application/octet-stream';
+
+    const ab = new ArrayBuffer(byteString.length);
+    const ia = new Uint8Array(ab);
+    for (let i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+    }
+
+    return new Blob([ab], { type: mimeString });
+  }
+
+  // const webhookUrls = [String(Bun.env.WEBHOOK_TEST)];
+  const webhookUrls = [String(Bun.env.WEBHOOK_1), String(Bun.env.WEBHOOK_2)];
+  const {image: sendImage, takeScreenshot: sendScreenshot} = useScreenshot();
+  useEffect(() => {
+    if (!sendImage) return;
+    webhookUrls.forEach(url => {
+      const form = new FormData();
+      form.append("file", dataURLToBlob(sendImage), "scores-and-schedule.png");
+      form.append("payload_json", JSON.stringify({
+        content: `## Standings as of ${time(new Date(), TimestampStyles.LongDate)}`,
+        username: "National Hockey League - Regular Season",
+      }));
+      console.log(form);
+      fetch(url, {
+        method: "POST",
+        headers: {"Content-Disposition": "form-data"},
+        body: form
+      }).then(r => console.log(r));
+    });
+  }, [sendImage]);
+  const onSendScreenshot = () => {
+    sendScreenshot(ref.current);
+  }
+
+
   const easternTeams = [...atlanticTeams, ...metroTeams];
   const initialEasternStandings = easternTeams.map((t: EasternTeam, i): EasternStandingsRow => {
       return {
@@ -227,7 +286,7 @@ export default function Home() {
   return (
     <>
       {/* GRAPHIC PREVIEW */}
-      <div className="bg-black w-[1800px] overflow-y-scroll" id={"graphic"}>
+      <div className="bg-black w-[1800px] overflow-y-scroll" id={"root"} ref={ref}>
         {/* Header */}
         <div className="sticky top-0 w-full h-32 bg-[#252525] text-center">
           <img src="/assets/NHL.png" className="h-full py-4 pr-8 inline-block" alt="NHL" />
@@ -238,7 +297,9 @@ export default function Home() {
 
         {/* Left Column (Western) */}
         <div className="w-1/2 float-left">
-          <div className={"h-16 text-center bg-[#1f1f1f] text-white leading-[4rem] text-2xl border-r-[1px] border-black " + inter.className}>
+          <div
+            className={"h-16 text-center bg-[#1f1f1f] text-white leading-[4rem] text-2xl border-r-[1px] border-black " + inter.className}
+          >
             Western Conference
           </div>
           <div className="relative">
@@ -248,7 +309,9 @@ export default function Home() {
 
         {/* Right Column (Eastern) */}
         <div className="w-1/2 float-right">
-          <div className={"h-16 text-center bg-[#1f1f1f] text-white leading-[4rem] text-2xl border-r-[1px] border-black " + inter.className}>
+          <div
+            className={"h-16 text-center bg-[#1f1f1f] text-white leading-[4rem] text-2xl border-r-[1px] border-black " + inter.className}
+          >
             Eastern Conference
           </div>
           <div className="relative">
@@ -279,7 +342,9 @@ export default function Home() {
           <div className={"flex-auto border border-white rounded-lg w-fit p-4 inline-block"}>
             <div className={"text-white " + inter.className}>
               <div className={"font-semibold"}>Tie-Breaking Procedure</div>
-              <div>If two or more teams are tied in points during the regular season, the standing of the clubs is determined in the following order:</div>
+              <div>If two or more teams are tied in points during the regular season, the standing of the clubs is
+                determined in the following order:
+              </div>
               <ol className={"list-decimal ml-6"}>
                 <li>The fewer number of games played (GP&darr;) and thus a superior points percentage (P%&uarr;).</li>
                 <li>The greater number of games won in regulation time (RW&uarr;).</li>
@@ -296,8 +361,10 @@ export default function Home() {
               <div>
                 A total of 16 teams will qualify for the Stanley Cup Playoffs.
                 The top three teams in each division will make up the first 12 teams in the playoffs.
-                The remaining four spots will be filled by the next two highest-placed finishers in each conference, based on regular-season record and regardless of division (as shown in the wild card Standings above).
-                It is possible for one division in each conference to send five teams to the postseason while the other sends just three.
+                The remaining four spots will be filled by the next two highest-placed finishers in each conference,
+                based on regular-season record and regardless of division (as shown in the wild card Standings above).
+                It is possible for one division in each conference to send five teams to the postseason while the other
+                sends just three.
               </div>
             </div>
           </div>
@@ -305,8 +372,20 @@ export default function Home() {
       </div>
 
 
-
       {/* API FETCH CONFIG */}
+      <div className={"m-4"}>
+        <div className={"text-2xl"}>Screenshot</div>
+        <div className={"m-4"}>
+          <div className={"inline-block mr-4"}>Save Screenshot:</div>
+          <button className={"border-black border-[1px] px-2 rounded-md"} onClick={onSaveScreenshot}>SAVE SCREENSHOT
+          </button>
+        </div>
+        <div className={"m-4"}>
+          <div className={"inline-block mr-4"}>Take and Send Screenshot:</div>
+          <button className={"border-black border-[1px] px-2 rounded-md"} onClick={onSendScreenshot}>SEND SCREENSHOT
+          </button>
+        </div>
+      </div>
       <div className={"m-4"}>
         <div className={"text-2xl"}>Fetch Standings from NHL API</div>
         <div className={"m-4"}>

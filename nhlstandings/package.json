@@ -3,27 +3,31 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "bun run cors & next dev",
-    "cors": "bun run opel -e https://api-web.nhle.com -p 8888",
+    "dev": "bun run corsnhl & bun run corsdiscord & next dev",
+    "corsnhl": "bun run opel -e https://api-web.nhle.com -p 8888",
+    "corsdiscord": "bun run opel -e https://discord.com -p 8889",
     "build": "next build",
-    "start": "bun run cors & next start",
+    "start": "bun run corsnhl & bun run corsdiscord & next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@discordjs/formatters": "^0.5.0",
     "next": "^14.2.15",
     "opel": "^1.1.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "use-screenshot-hook": "^1.0.2"
   },
   "devDependencies": {
-    "typescript": "^5.6.3",
+    "@types/bun": "^1.1.14",
     "@types/node": "^20.16.11",
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.1",
     "autoprefixer": "^10.4.20",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "14.0.4",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.13",
-    "eslint": "^8.57.1",
-    "eslint-config-next": "14.0.4"
+    "typescript": "^5.6.3"
   }
 }

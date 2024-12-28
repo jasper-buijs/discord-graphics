@@ -4,7 +4,8 @@ import {Dispatch, SetStateAction} from "react";
 export function fetchSchedule(updateScheduleList: Dispatch<SetStateAction<ScheduleListItem[]>>) {
   let toScheduleGames: ScheduleListItem[] = [];
   const now = new Date();
-  //const now = new Date("November 11, 2024 19:00:00");
+  //now.setDate(now.getDate() - 1); //uncomment for yesterday
+  //const now = new Date("November 21, 2024 19:00:00");
   const year = String(now.getFullYear());
   const month = String(now.getMonth() + 1).padStart(2, "0");
   const day = String(now.getDate()).padStart(2, "0");
@@ -36,7 +37,8 @@ export function fetchScores(updateScoreList: Dispatch<SetStateAction<ScoreListIt
   let toScoreGames: ScoreListItem[] = [];
   const now = new Date();
   now.setDate(now.getDate() - 1);
-  //const now = new Date("November 10, 2024 19:00:00");
+  //now.setDate(now.getDate() - 1); //uncomment for yesterday
+  //const now = new Date("November 20, 2024 19:00:00");
   const year = String(now.getFullYear());
   const month = String(now.getMonth() + 1).padStart(2, "0");
   const day = String(now.getDate()).padStart(2, "0");

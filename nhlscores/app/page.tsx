@@ -1,5 +1,6 @@
 "use client";
 
+import { time, TimestampStyles } from "@discordjs/formatters";
 import {Inter} from "next/font/google";
 import scoreEmblems from "@/app/components/scoreEmblem";
 import scheduleEmblems from "@/app/components/scheduleEmblem";
@@ -7,34 +8,79 @@ import { useEffect, useRef, useState } from "react";
 import {FinalType, ScheduleListItem, ScoreListItem, Team} from "@/app/types";
 import {teamAb} from "@/app/components/teams";
 import {fetchSchedule, fetchScores} from "@/app/components/fetchAPI";
-// @ts-ignore
-//import { useScreenshot } from "use-react-screenshot";
 import { useScreenshot } from "use-screenshot-hook";
 
 const inter = Inter({subsets: ["latin"]});
 
 export default function Home() {
   const ref = useRef<any>(null);
-  const {image, takeScreenshot} = useScreenshot();
+
+  const {image: saveImage, takeScreenshot: saveScreenshot} = useScreenshot();
   useEffect(() => {
-    if (!image) return;
+    if (!saveImage) return;
     const date = new Date();
     let name = `${String(date.getFullYear()).substring(2, 4)}${String(date.getMonth() + 1)}${String(date.getDate())}.png`;
     let link = document.createElement("a");
-    link.href = image || "";
+    link.href = saveImage || "";
     link.download = name;
     link.click();
     link.remove();
-  }, [image]);
-  const onTakeScreenshot = () => {
-    takeScreenshot(ref.current);
+  }, [saveImage]);
+  const onSaveScreenshot = () => {
+    saveScreenshot(ref.current);
   }
-  /*function onTakeScreenshot () {
-    const graphic = document.getElementById("graphic");
 
-  }*/
+  function dataURLToBlob(dataURL: string) {
+    const parts = dataURL.split(',');
+    const byteString = atob(parts[1]);
+    const mimeMatch = parts[0].match(/:(.*?);/);
+    const mimeString = mimeMatch?.[1] ?? 'application/octet-stream';
 
-  const [title, setTitle] = useState<string>("NHL Regular Season")
+    const ab = new ArrayBuffer(byteString.length);
+    const ia = new Uint8Array(ab);
+    for (let i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+    }
+
+    return new Blob([ab], { type: mimeString });
+  }
+
+  //const webhookUrls = [String(Bun.env.WEBHOOK_TEST)];
+  const webhookUrls = [String(Bun.env.WEBHOOK_1), String(Bun.env.WEBHOOK_2)];
+  const {image: sendImage, takeScreenshot: sendScreenshot} = useScreenshot();
+  useEffect(() => {
+    if (!sendImage) return;
+      webhookUrls.forEach(url => {
+        const form = new FormData();
+        //form.append("file", sendImage);
+        form.append("file", dataURLToBlob(sendImage), "scores-and-schedule.png");
+        form.append("payload_json", JSON.stringify({
+          content: `## ${time(new Date(), TimestampStyles.LongDate)}`,
+          username: "National Hockey League - Regular Season",
+        }));
+        console.log(form);
+        fetch(url, {
+          method: "POST",
+          headers: {"Content-Disposition": "form-data"},
+          body: form
+        }).then(r => console.log(r));
+      /*fetch(url, {
+        method: "POST",
+        headers: { "Content-Disposition": "form-data"; name="payload_json", "Content-Type": "application/json" },
+        body: JSON.stringify({
+          content: `## ${time(new Date(), TimestampStyles.LongDate)}`,
+          username: "National Hockey League - Regular Season",
+
+        })
+      });*/
+    });
+  }, [sendImage]);
+  const onSendScreenshot = () => {
+    sendScreenshot(ref.current);
+  }
+
+
+  const [title, setTitle] = useState<string>("NHL Regular Season");
 
   const [scoreList, updateScoreList] = useState<ScoreListItem[]>([/*{
     final: "F",
@@ -263,7 +309,11 @@ export default function Home() {
         <div className={"text-2xl"}>Screenshot</div>
         <div className={"m-4"}>
           <div className={"inline-block mr-4"}>Save Screenshot:</div>
-          <button className={"border-black border-[1px] px-2 rounded-md"} onClick={onTakeScreenshot}>SCREENSHOT</button>
+          <button className={"border-black border-[1px] px-2 rounded-md"} onClick={onSaveScreenshot}>SAVE SCREENSHOT</button>
+        </div>
+        <div className={"m-4"}>
+          <div className={"inline-block mr-4"}>Take and Send Screenshot:</div>
+          <button className={"border-black border-[1px] px-2 rounded-md"} onClick={onSendScreenshot}>SEND SCREENSHOT</button>
         </div>
       </div>
       <div className={"m-4"}>
